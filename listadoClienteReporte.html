@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="cliente.css">
+  <!-- FontAwesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <title>List of Orders</title>
+</head>
+
+<body>
+  <!-- Navbar Placeholder -->
+  <div class="navBar">
+    <nav>
+        <a href="#" class="logo"> 
+            <h2 class="Nombre">Reciplas</h2>
+        </a>
+        <ul>
+          <li><a href="cliente.html">Cliente</a></li>
+          <li><a href="listaPedidos.html">Pedidos</a></li>
+          <li><a href="sales.html">Ventas</a></li>
+          <li><a href="ListadoVentasReporte.html">Reportes</a></li>
+        </ul>
+        <img src="./externalSources/iconprofile.png" class="perfil" onclick="toggleMenu()">
+        <div class="sub-menu" id="subMenu">
+            <div class="items">
+                <div class="user-info">
+                    <img src="./externalSources/profile.png">
+                    <p>Perfil</p>
+                </div>
+                <hr>
+                    <a href="#" class="sub-menu-link">
+                        <img src="./externalSources/setting.png">
+                        <p>Ajustes</p>
+                        <span>></span>
+                    </a>
+                    <a href="loggin.html" class="sub-menu-link">
+                        <img src="./externalSources/logout.png">
+                        <p>Cerrar Sesión</p>
+                        <span>></span>
+                    </a>
+                
+            </div>
+        </div>
+    </nav>
+</div>
+
+  <div class="container mt-4">
+    <h2>Listado de Clientes</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID Cliente</th>
+          <th>Apellido y Nombre</th>
+          <th>Tipo</th>
+          <th>Email</th>
+          <th>Telefono</th>
+          <th>Fecha</th>
+          <th> </th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+
+      </tbody>
+    </table>
+    <button class="btn btn-sm btn-primary mr-2 edit-button" onclick="editRow(' + i + ')"><a href="#" class="text-white">Generar Reporte General</a></button>
+  </div>
+
+  <!-- Bootstrap JS (optional, only required if you need JavaScript functionality) -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script>
+    let subMenu = document.getElementById("subMenu");
+            function toggleMenu(){
+                subMenu.classList.toggle("open-menu")
+            };
+
+  document.addEventListener("DOMContentLoaded", function () {
+  var data = [
+    {
+      id: "001",
+      ApellidoYNombre: "Juan Perez",
+      Tipo: "Particular",
+      email: "Barranqueras",
+      telefono: "3624121212",
+      fecha: "juancho@gmail.com",
+    },
+    {
+      id: "002",
+      ApellidoYNombre: "Juan Perez",
+      Tipo: "Particular",
+      email: "Barranqueras",
+      telefono: "3624121212",
+      fecha: "juancho@gmail.com",
+    },
+    {
+      id: "003",
+      ApellidoYNombre: "Juan Perez",
+      Tipo: "Particular",
+      email: "Barranqueras",
+      telefono: "3624121212",
+      fecha: "juancho@gmail.com",
+    },
+    // Add more data objects as needed
+  ];
+
+  var tableBody = document.getElementById("tableBody");
+  var rowHtml = "";
+
+  for (var i = 0; i < data.length; i++) {
+  rowHtml += "<tr>";
+  rowHtml += "<td>" + data[i].id + "</td>";
+  rowHtml += "<td>" + data[i].ApellidoYNombre + "</td>";
+  rowHtml += "<td>" + data[i].Tipo + "</td>";
+  rowHtml += "<td>" + data[i].email + "</td>";
+  rowHtml += "<td>" + data[i].telefono + "</td>";
+  rowHtml += "<td>" + data[i].fecha + "</td>";
+  rowHtml += '<td>';
+  rowHtml += '<button class="btn btn-sm btn-primary mr-2 edit-button" onclick="editRow(' + i + ')">Reporte</button>';
+  rowHtml += '</td>';
+  rowHtml += "</tr>";
+}
+
+tableBody.innerHTML = rowHtml;
+
+
+
+  var generatePdfButton = document.getElementById("generatePdfButton");
+  generatePdfButton.addEventListener("click", function () {
+    var doc = new jsPDF();
+    doc.autoTable({ html: ".table" });
+    doc.save("table.pdf");
+  });
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.3/jspdf.umd.min.js"></script>
+</body>
+</html>

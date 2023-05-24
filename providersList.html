@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="listaPedidos.css" />
+    <title>List of Orders</title>
+  </head>
+  <body>
+    <!-- Navbar Placeholder -->
+    <div class="navBar">
+      <nav>
+          <a href="#" class="logo"> 
+              <h2 class="Nombre">Reciplas</h2>
+          </a>
+          <ul>
+              <li><a href="#">Personal</a></li>
+              <li><a href="#">Materia Prima</a></li>
+              <li><a href="#">Productos</a></li>
+              <li><a href="#">Reportes</a></li>
+          </ul>
+          <img src="./externalSources/iconprofile.png" class="perfil" onclick="toggleMenu()">
+          <div class="sub-menu" id="subMenu">
+              <div class="items">
+                  <div class="user-info">
+                      <img src="./externalSources/profile.png">
+                      <p>Perfil</p>
+                  </div>
+                  <hr>
+                      <a href="#" class="sub-menu-link">
+                          <img src="./externalSources/setting.png">
+                          <p>Ajustes</p>
+                          <span>></span>
+                      </a>
+                      <a href="loggin.html" class="sub-menu-link">
+                          <img src="./externalSources/logout.png">
+                          <p>Cerrar Sesión</p>
+                          <span>></span>
+                      </a>
+                  
+              </div>
+          </div>
+      </nav>
+  </div>
+    <body>
+      <div class="container mt-4">
+        <h2>Proveedores</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Proveedor</th>
+              <th>Contacto</th>
+              <th>Direccion</th>
+              <th>Ciudad</th>
+              <th>Telefono</th>
+              <th>Correo electronico</th>
+              <th>Formas de pago</th>
+              <th>MP que distribuye</th>
+              <th>Dia de entrega</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <!-- Table rows will be dynamically generated here -->
+          </tbody>
+        </table>
+      </div>
+    </body>
+    <!-- Bootstrap JS (optional, only required if you need JavaScript functionality) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script>
+      let subMenu = document.getElementById("subMenu");
+      function toggleMenu() {
+        subMenu.classList.toggle("open-menu");
+      }
+      
+      document.addEventListener("DOMContentLoaded", function () {
+        var data = [
+          {
+            proveedor: "001",
+            contacto: "Juan Perez",
+            direccion: "Particular",
+            ciudad: "Barranqueras",
+            telefono: "3624121212",
+            email: "juancho@gmail.com",
+            formasPago: "en flores",
+            mpDistribuye: "flores",
+            diaEntrega: "2002/03/03",
+          },
+          {
+            proveedor: "002",
+            contacto: "Analia ",
+            direccion: "Particular",
+            ciudad: "Barranqueras",
+            telefono: "3624121212",
+            email: "eljuancho@gmail.com",
+            formasPago: "en flores",
+            mpDistribuye: "flores",
+            diaEntrega: "2002/03/03",
+          },
+          {
+            proveedor: "003",
+            contacto: "Juan Perez",
+            direccion: "Particular",
+            ciudad: "Barranqueras",
+            telefono: "3624121212",
+            email: "eljuancho@gmail.com",
+            formasPago: "en flores",
+            mpDistribuye: "flores",
+            diaEntrega: "2002/03/03",
+          },
+          // Add more data objects as needed
+        ];
+
+        var tableBody = document.getElementById("tableBody");
+        var rowHtml = "";
+
+        for (var i = 0; i < data.length; i++) {
+          rowHtml += "<tr>";
+          rowHtml += "<td>" + data[i].proveedor + "</td>";
+          rowHtml += "<td>" + data[i].contacto + "</td>";
+          rowHtml += "<td>" + data[i].direccion + "</td>";
+          rowHtml += "<td>" + data[i].ciudad + "</td>";
+          rowHtml += "<td>" + data[i].telefono + "</td>";
+          rowHtml += "<td>" + data[i].email + "</td>";
+          rowHtml += "<td>" + data[i].formasPago + "</td>";
+          rowHtml += "<td>" + data[i].mpDistribuye + "</td>";
+          rowHtml += "<td>" + data[i].diaEntrega + "</td>";
+          rowHtml += "<td>";
+          rowHtml += '<div class="dropdown">';
+          rowHtml +=
+            '<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+          rowHtml += "opciones";
+          rowHtml += "</button>";
+          rowHtml +=
+            '<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">';
+          rowHtml += '<a class="dropdown-item" href="#">Option 1</a>';
+          rowHtml += '<a class="dropdown-item" href="#">Option 2</a>';
+          rowHtml += '<a class="dropdown-item" href="#">Option 3</a>';
+          rowHtml += "</div>";
+          rowHtml += "</div>";
+          rowHtml += "</td>";
+          rowHtml += "</tr>";
+        }
+
+        tableBody.innerHTML = rowHtml;
+      });
+    </script>
+  </body>
+</html>

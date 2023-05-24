@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="materiaPrima.css">
+    </head>
+    <body>
+        <div class="navBar">
+            <nav>
+                <a href="#" class="logo"> 
+                    <h2 class="Nombre">Reciplas</h2>
+                </a>
+                <ul>
+                    <li><a href="#">Personal</a></li>
+                    <li><a href="#">Materia Prima</a></li>
+                    <li><a href="#">Productos</a></li>
+                    <li><a href="#">Reportes</a></li>
+                </ul>
+                <img src="./externalSources/iconprofile.png" class="perfil" onclick="toggleMenu()">
+                <div class="sub-menu" id="subMenu">
+                    <div class="items">
+                        <div class="user-info">
+                            <img src="./externalSources/profile.png">
+                            <p>Perfil</p>
+                        </div>
+                        <hr>
+                            <a href="#" class="sub-menu-link">
+                                <img src="./externalSources/setting.png">
+                                <p>Ajustes</p>
+                                <span>></span>
+                            </a>
+                            <a href="#" class="sub-menu-link">
+                                <img src="./externalSources/logout.png">
+                                <p>Cerrar Sesión</p>
+                                <span>></span>
+                            </a>
+                        
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <script>
+            let subMenu = document.getElementById("subMenu");
+            function toggleMenu(){
+                subMenu.classList.toggle("open-menu")
+            }
+        </script>
+        <div class="formulario">
+            <div class="container">
+                <div class="title">Nueva Materia Prima</div>
+                <div class="subtitle">
+                    <h5>Se le asignará un número de Materia Prima</h5>
+                </div>
+                <form action="#">
+                    <div class="row">
+                        <div class="detalle-cliente">
+                            <div class="input-box">
+                                <span class="detalle">ID Materia Prima</span>
+                                <input type="number" placeholder="0000">
+                            </div>
+                            <div class="input-box">
+                                <span class="detalle">Seleccionar Fecha</span>
+                                <input type="date" placeholder="Seleccionar Fecha">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <span class="detalle">Descripción</span>
+                        <textarea id="descripcion" rows="3" placeholder="Ingrese una breve descripción de la materia prima"></textarea>
+                    </div>
+                    <div class="button">
+                        <a href="materiaprima.html"><input type="button" value="Registrar Materia Prima"></a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

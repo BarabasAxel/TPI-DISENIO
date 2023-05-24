@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="sales.css">
+  <title>Listado de Ventas</title>
+</head>
+
+<body>
+  <!-- Navbar Placeholder -->
+  <div class="navBar">
+    <nav>
+      <a href="#" class="logo">
+        <h2 class="Nombre">Reciplas</h2>
+      </a>
+      <ul>
+        <li><a href="#">Personal</a></li>
+        <li><a href="#">Materia Prima</a></li>
+        <li><a href="#">Productos</a></li>
+        <li><a href="#">Reportes</a></li>
+      </ul>
+      <img src="./externalSources/iconprofile.png" class="perfil" onclick="toggleMenu()">
+      <div class="sub-menu" id="subMenu">
+        <div class="items">
+          <div class="user-info">
+            <img src="./externalSources/profile.png">
+            <p>Perfil</p>
+          </div>
+          <hr>
+          <a href="#" class="sub-menu-link">
+            <img src="./externalSources/setting.png">
+            <p>Ajustes</p>
+            <span>></span>
+          </a>
+          <a href="#" class="sub-menu-link">
+            <img src="./externalSources/logout.png">
+            <p>Cerrar Sesión</p>
+            <span>></span>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <div class="container mt-4">
+    <div class="busqueda">
+      <input class="bg-white" type="text" id="filterInput" placeholder="Filter ventas...">
+    </div>
+    <h2>Últimas Ventas Realizadas</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Número de Venta</th>
+          <th>Fecha</th>
+          <th>Número Cliente</th>
+          <th>Número Pedido</th>
+          <th>Estado</th>
+          <th>Monto</th>
+          <th>Forma de Pago</th>
+          <th> </th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+        <!-- Table rows will be dynamically generated here -->
+      </tbody>
+    </table>
+    <button class="btn btn-sm btn-primary mr-2 edit-button" onclick="editRow(' + i + ')"><a href="#" class="text-white">Generar Reporte General</a></button>
+  </div>
+
+  <!-- Bootstrap JS (optional, only required if you need JavaScript functionality) -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script>
+document.addEventListener('DOMContentLoaded', function () {
+  var data = [
+    {
+      numeroVenta: '001',
+      fecha: '2022/05/10',
+      cliente: '0022',
+      pedido: 'Pedido 1',
+      estado: 'Entregado',
+      monto: '$100',
+      formaPago: 'Efectivo'
+    },
+    {
+      numeroVenta: '002',
+      fecha: '2022/05/11',
+      cliente: '0000',
+      pedido: 'Pedido 2',
+      estado: 'Pendiente',
+      monto: '$150',
+      formaPago: 'Tarjeta de Crédito'
+    },
+    {
+      numeroVenta: '003',
+      fecha: '2022/05/12',
+      cliente: '1000',
+      pedido: 'Pedido 3',
+      estado: 'En Proceso',
+      monto: '$200',
+      formaPago: 'Transferencia Bancaria'
+    }
+    // Add more data objects as needed
+  ];
+
+  var tableBody = document.getElementById('tableBody');
+  var rowHtml = '';
+
+  for (var i = 0; i < data.length; i++) {
+    rowHtml += '<tr>';
+    rowHtml += '<td>' + data[i].numeroVenta + '</td>';
+    rowHtml += '<td>' + data[i].fecha + '</td>';
+    rowHtml += '<td>' + data[i].cliente + '</td>';
+    rowHtml += '<td>' + data[i].pedido + '</td>';
+    rowHtml += '<td>' + data[i].estado + '</td>';
+    rowHtml += '<td>' + data[i].monto + '</td>';
+    rowHtml += '<td>' + data[i].formaPago + '</td>';
+    
+    rowHtml += '<td>';
+  }
+
+  tableBody.innerHTML = rowHtml;
+
+  // Add event listener to handle delete button
+  var deleteButtons = document.getElementsByClassName('delete-button');
+  for (var j = 0; j < deleteButtons.length; j++) {
+    deleteButtons[j].addEventListener('click', function () {
+      var index = parseInt(this.getAttribute('data-index'));
+      deleteVenta(index);
+    });
+  }
+});
+
+function deleteVenta(index) {
+  // Perform delete operation based on the provided index
+  console.log('Deleting venta with index:', index);
+  // Add your delete logic here
+
+  // Remove the corresponding row from the table
+  var tableBody = document.getElementById('tableBody');
+  var row = tableBody.getElementsByTagName('tr')[index];
+  row.parentNode.removeChild(row);
+}
+function confirmDelete(index) {
+  // Display a confirmation dialog
+  if (confirm('seguro que queres borrar esto?')) {
+    // If confirmed, perform the delete operation
+    deleteVenta(index);
+  }
+}
+
+
+  </script>
+</body>
+
+</html>

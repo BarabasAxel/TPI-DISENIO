@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="sales.css">
+  <title>List of Orders</title>
+</head>
+
+<body>
+  <!-- Navbar Placeholder -->
+  <div class="navBar">
+    <nav>
+      <a href="#" class="logo">
+        <h2 class="Nombre">Reciplas</h2>
+      </a>
+      <ul>
+        <li><a href="#">Personal</a></li>
+        <li><a href="#">Materia Prima</a></li>
+        <li><a href="#">Productos</a></li>
+        <li><a href="#">Reportes</a></li>
+      </ul>
+      <img src="./externalSources/iconprofile.png" class="perfil" onclick="toggleMenu()">
+      <div class="sub-menu" id="subMenu">
+        <div class="items">
+          <div class="user-info">
+            <img src="./externalSources/profile.png">
+            <p>Perfil</p>
+          </div>
+          <hr>
+          <a href="#" class="sub-menu-link">
+            <img src="./externalSources/setting.png">
+            <p>Ajustes</p>
+            <span>></span>
+          </a>
+          <a href="#" class="sub-menu-link">
+            <img src="./externalSources/logout.png">
+            <p>Cerrar Sesión</p>
+            <span>></span>
+          </a>
+        </div>
+      </div>
+    </nav>
+</div>
+
+<body>
+    <div class="container mt-4">
+      <div class="busqueda">
+        <input class="bg-white" type="text" id="filterInput" placeholder="Filter producto...">
+      </div>
+      <h2>Stock de Productos</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Codigo</th>
+            <th>Pedido al que pertenece</th>
+            <th>Cantidad</th>
+            <th>Estado</th>
+            <th>Total</th>
+            <th> </th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+          <!-- Table rows will be dynamically generated here -->
+        </tbody>
+      </table>
+      <button class="btn btn-sm btn-primary mr-2 edit-button" onclick="editRow(' + i + ')"><a href="#" class="text-white">Generar Reporte General</a></button>
+    </div>
+  </body>
+
+  <!-- Bootstrap JS (optional, only required if you need JavaScript functionality) -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var data = [
+        {
+          Nombre: 'Bolsa',
+          Codigo: '001',
+          Pedido: '001',
+          Cantidad: '1',
+          Estado: 'Entregado',
+          Total: '1000',
+        },
+        {
+          Nombre: 'Botella',
+          Codigo: '002',
+          Pedido: '002',
+          Cantidad: '1',
+          Estado: 'Entregado',
+          Total: '2000',
+        },
+        {
+          Nombre: 'Silla',
+          Codigo: '003',
+          Pedido: '003',
+          Cantidad: '1',
+          Estado: 'Entregado',
+          Total: '3000',
+        },
+        
+        
+        // Add more data objects as needed
+      ];
+
+      var tableBody = document.getElementById('tableBody');
+      var rowHtml = '';
+
+      for (var i = 0; i < data.length; i++) {
+        rowHtml += '<tr>';
+        rowHtml += '<td>' + data[i].Nombre + '</td>';
+        rowHtml += '<td>' + data[i].Codigo + '</td>';
+        rowHtml += '<td>' + data[i].Pedido + '</td>';
+        rowHtml += '<td>' + data[i].Cantidad + '</td>';
+        rowHtml += '<td>' + data[i].Estado + '</td>';
+        rowHtml += '<td>' + data[i].Total + '</td>';
+        rowHtml += '<td>';
+        rowHtml += '<button class="btn btn-sm btn-primary mr-2 edit-button" onclick="editRow(' + i + ')">Reporte Detalle Producto</button>';
+        rowHtml += '</td>';
+        rowHtml += '</tr>';
+      }
+
+      tableBody.innerHTML = rowHtml;
+    });
+  </script>
+</body>
+
+</html>
