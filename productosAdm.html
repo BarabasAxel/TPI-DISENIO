@@ -7,7 +7,10 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="Pedidos.css">
+  <link rel="stylesheet" href="cliente.css">
+  <!-- FontAwesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
   <title>List of Orders</title>
 </head>
 
@@ -15,15 +18,15 @@
   <!-- Navbar Placeholder -->
   <div class="navBar">
     <nav>
-        <a href="menu-ventas.html" class="logo"> 
+        <a href="menu-administracion.html" class="logo"> 
             <h2 class="Nombre">Reciplas</h2>
         </a>
         <ul>
-          <li><a href="clientList.html">Cliente</a></li>
-          <li><a href="listaPedidos.html">Pedidos</a></li>
-          <li><a href="sales.html">Ventas</a></li>
+          <li><a href="personal.html">Personal</a></li>
+          <li><a href="materiaprima.html">Materia Prima</a></li>
+          <li><a href="listadoProductoReporte.html">Productos</a></li>
           <li><a href="ListadoVentasReporte.html">Reportes</a></li>
-      </ul>
+        </ul>
         <img src="./externalSources/iconprofile.png" class="perfil" onclick="toggleMenu()">
         <div class="sub-menu" id="subMenu">
             <div class="items">
@@ -49,54 +52,57 @@
 </div>
 
   <div class="container mt-4">
-    <h2>Pedidos</h2>
+    <h2>Productos</h2>
     <table class="table">
       <thead>
         <tr>
-          <th>ID Pedido</th>
-          <th>Total</th>
-          <th>ID Cliente</th>
-          <th>Fecha Solicitado</th>
-          <th>Estado</th>
-          <th></th>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Descripcion</th>
+          <th>Precio</th>
+          <th>Fecha de Alta</th>
+          <th> </th>
         </tr>
       </thead>
       <tbody id="tableBody">
 
       </tbody>
     </table>
-    <button class="btn btn-sm btn-primary mr-2 edit-button" onclick="editRow(' + i + ')"><a href="agregarPedido.html" class="text-white">Agregar Pedido</a></button>
+    <button class="btn btn-sm btn-primary mr-2 edit-button" onclick="editRow(' + i + ')"><a href="nuevoProductoAdm.html" class="text-white">Agregar Nuevo Producto</a></button>
   </div>
 
-  <script>
+  <!-- Bootstrap JS (optional, only required if you need JavaScript functionality) -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script>
     let subMenu = document.getElementById("subMenu");
-    function toggleMenu(){
-        subMenu.classList.toggle("open-menu")
-    }
-    document.addEventListener("DOMContentLoaded", function () {
-    var data = [
+            function toggleMenu(){
+                subMenu.classList.toggle("open-menu")
+            };
+
+  document.addEventListener("DOMContentLoaded", function () {
+  var data = [
     {
-      id: "010",
-      total: "20000",
-      idCliente: "001",
-      fechaSolicitado: "25-05-2023",
-      Estado: "Entregado",
+      id: "001",
+      Nombre: "Silla",
+      Descripcion: "silla con respaldo",
+      Precio: "2000",
+      Fecha: "12-05-2023",
     },
     {
-      id: "011",
-      total: "20000",
-      idCliente: "001",
-      fechaSolicitado: "25-05-2023",
-      Estado: "Entregado",
+      id: "002",
+      Nombre: "Silla",
+      Descripcion: "silla con respaldo",
+      Precio: "2000",
+      Fecha: "12-05-2023",
     },
     {
-      id: "012",
-      total: "20000",
-      idCliente: "001",
-      fechaSolicitado: "25-05-2023",
-      Estado: "Entregado",
+      id: "003",
+      Nombre: "Silla",
+      Descripcion: "silla con respaldo",
+      Precio: "2000",
+      Fecha: "12-05-2023",
     },
-    
     // Add more data objects as needed
   ];
 
@@ -106,14 +112,13 @@
   for (var i = 0; i < data.length; i++) {
   rowHtml += "<tr>";
   rowHtml += "<td>" + data[i].id + "</td>";
-  rowHtml += "<td>" + data[i].total + "</td>";
-  rowHtml += "<td>" + data[i].idCliente + "</td>";
-  rowHtml += "<td>" + data[i].fechaSolicitado + "</td>";
-  rowHtml += "<td>" + data[i].Estado + "</td>";
+  rowHtml += "<td>" + data[i].Nombre + "</td>";
+  rowHtml += "<td>" + data[i].Descripcion + "</td>";
+  rowHtml += "<td>" + data[i].Precio + "</td>";
+  rowHtml += "<td>" + data[i].Fecha + "</td>";
   rowHtml += '<td>';
-  rowHtml += '<button class="btn btn-sm btn-primary mr-2 edit-button" onclick="editRow(' + i + ')"><a href="editarPedido.html" class="text-white subrayado">Editar</a></button>';
+  rowHtml += '<button class="btn btn-sm btn-primary mr-2 edit-button" onclick="editRow(' + i + ')"><a href="editarProductoAdm.html" class="text-white">Editar</a></button>';
   rowHtml += '<button class="btn btn-sm btn-danger delete-button" onclick="deleteRow(' + i + ')">Eliminar</button>';
-  rowHtml += '<button class="btn btn-sm btn-success delete-button" onclick="deleteRow(' + i + ')"><a href="orderDetails.html" class="text-white subrayado">Ver mas</a></button>';
   rowHtml += '</td>';
   rowHtml += "</tr>";
 }
@@ -130,10 +135,6 @@ tableBody.innerHTML = rowHtml;
   });
 });
 </script>
-  <!-- Bootstrap JS (optional, only required if you need JavaScript functionality) -->
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.3/jspdf.umd.min.js"></script>
 </body>
-
 </html>

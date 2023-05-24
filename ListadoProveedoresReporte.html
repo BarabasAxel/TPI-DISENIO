@@ -18,12 +18,6 @@
       <a href="#" class="logo">
         <h2 class="Nombre">Reciplas</h2>
       </a>
-      <ul>
-        <li><a href="#">Personal</a></li>
-        <li><a href="#">Materia Prima</a></li>
-        <li><a href="#">Productos</a></li>
-        <li><a href="#">Reportes</a></li>
-      </ul>
       <img src="./externalSources/iconprofile.png" class="perfil" onclick="toggleMenu()">
       <div class="sub-menu" id="subMenu">
         <div class="items">
@@ -72,7 +66,7 @@
           <!-- Table rows will be dynamically generated here -->
         </tbody>
       </table>
-      <button class="btn btn-sm btn-primary mr-2 edit-button" onclick="editRow(' + i + ')"><a href="#" class="text-white">Generar Reporte</a></button>
+      <button class="btn btn-sm btn-primary mr-2 edit-button" onclick="editRow(' + i + ')"><a href="#" class="text-white">Generar Reporte General</a></button>
     </div>
     
   </body>
@@ -90,8 +84,8 @@
           ciudad: 'Barranqueras',
           telefono: '3624121212',
           email: 'eljuancho@gmail.com',
-          formasPago: 'en flores',
-          mpDistribuye: 'flores',
+          formasPago: 'efectivo',
+          mpDistribuye: 'PET 001',
           diaEntrega: '2002/03/03'
         },
         {
@@ -101,19 +95,19 @@
           ciudad: 'Barranqueras',
           telefono: '3624121212',
           email: 'eljuancho@gmail.com',
-          formasPago: 'en flores',
-          mpDistribuye: 'flores',
+          formasPago: 'efectivo',
+          mpDistribuye: 'PET 002',
           diaEntrega: '2002/03/03'
         },
         {
-          proveedor: '001',
+          proveedor: '003',
           contacto: 'Juan Perez',
           direccion: 'Particular',
           ciudad: 'Barranqueras',
           telefono: '3624121212',
           email: 'eljuancho@gmail.com',
-          formasPago: 'en flores',
-          mpDistribuye: 'flores',
+          formasPago: 'efectivo',
+          mpDistribuye: 'PET 003',
           diaEntrega: '2002/03/03'
         },
         // Add more data objects as needed
@@ -133,6 +127,7 @@
         rowHtml += '<td>' + data[i].formasPago + '</td>';
         rowHtml += '<td>' + data[i].mpDistribuye + '</td>';
         rowHtml += '<td>' + data[i].diaEntrega + '</td>';
+        rowHtml += '<button class="btn btn-sm btn-primary mr-2 edit-button" onclick="editRow(' + i + ')">Reporte Proveedor</button>';
         rowHtml += '<td>';
       }
 
